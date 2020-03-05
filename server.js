@@ -24,9 +24,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Refused to apply style from 'http://localhost:8000/assets/css/styles.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled.
-
-app.use("/public/assets/css", express.static(__dirname + '/public/assets/css'));
-app.use("/public/assets/js",express.static(__dirname + '/public/assets/js'));
+app.use(express.static('public'))
+// app.use("/public/assets/css", express.static(__dirname + '/public/assets/css'));
+// app.use("/public/assets/js",express.static(__dirname + '/public/assets/js'));
 
 // ================================================================================
 // ROUTER
