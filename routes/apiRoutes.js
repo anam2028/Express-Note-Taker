@@ -19,7 +19,7 @@ module.exports = function (app) {
     // ---------------------------------------------------------------------------
 
     app.get('/api/notes', function (req, res) {
-        fs.readFile("../Express-Note-Taker/db/db.json", "utf8", function (error, data) {
+        fs.readFile(path.join(__dirname, "../db/db.json"), "utf8", function (error, data) {
             if (error) {
                 return console.log(error);
             }
@@ -45,7 +45,7 @@ module.exports = function (app) {
 
         res.json(true)
         notedatabaseString = JSON.stringify(notedatabase)
-        fs.writeFile("../Express-Note-Taker/db/db.json", notedatabaseString, function (err) {
+        fs.writeFile(path.join(__dirname, "../db/db.json"), notedatabaseString, function (err) {
             if (err) {
                 return console.log(err);
             }
@@ -53,3 +53,21 @@ module.exports = function (app) {
         });
     });
 };
+
+// anamikas-MacBook-Pro:Express-Note-Taker anamika$ node server.js 
+/*App listening on PORT: 8000
+PARSE:[{"tittle":"hello","text":"whatsup"},{"title":"NoteNote1","text":"TextText22"},{"title":"note2note2","text":"text2text2"},{"title":"New Note3","text":"todo list for today"},{"title":"T4","text":"X4"},{"title":"test","text":"test"}]
+PARSE:[{"tittle":"hello","text":"whatsup"},{"title":"NoteNote1","text":"TextText22"},{"title":"note2note2","text":"text2text2"},{"title":"New Note3","text":"todo list for today"},{"title":"T4","text":"X4"},{"title":"test","text":"test"}]
+req.body is :{"title":"m","text":"j"}
+[
+  { tittle: 'hello', text: 'whatsup' },
+  { title: 'NoteNote1', text: 'TextText22' },
+  { title: 'note2note2', text: 'text2text2' },
+  { title: 'New Note3', text: 'todo list for today' },
+  { title: 'T4', text: 'X4' },
+  { title: 'test', text: 'test' },
+  { title: 'm', text: 'j' }
+]
+undefined:1
+
+*/
